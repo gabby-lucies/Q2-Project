@@ -1,8 +1,6 @@
 import time
-import tkinter
 import random
-
-
+import tkinter
 
 country = ['Argentina', 'Russia', 'Japan', 'America', 'Puerto Rico', 'Guam', 'France', 'Canada', 'Mexico',
 'Finland', 'Sweden', 'Norway', 'China', 'Germany', 'Ukraine', 'Chad', 'Guatamala', 'Brazil', 'Chile', 'Columbia',
@@ -83,4 +81,6 @@ time.sleep(2)
 print("Logic")
 print(random.choice(logic))
 time.sleep(2)
+
+
 
