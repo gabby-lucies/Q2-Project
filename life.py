@@ -11,9 +11,10 @@ no_job = ["quit_job", "Quit_job", "Quit_Job", "No_job", "no_job"]
 neckrope = ["suicide", "Suicide", "commit_suicide", "die", "commit_neckrope"]
 police_job = ["apply_police", "police_apply", "Apply_police", "apply_Police", "Apply_Police"]
 doctor_job = ["apply_doctor", "apply_Doctor", "Apply_Doctor", "Apply_doctor"]
-mafia_job = ["apply_mafia", "Apply_mafia", "Apply_Mafia", "apply_Mafia"]
+mafia_job = ["apply_mafia", "Apply_mafia", "Apply_Mafia", "apply_Mafia", "join_mafia", "Join_mafia", "Join_Mafia"]
 no_school = ["drop_out", "dropout", "Dropout", "Drop_Out", "Drop_out"]
 study = ["study", "Study", "STUDY"]
+military_boi = ["join_military", "Join_military", "apply_military", "Appy_military", "military"]
 
 country = ['Argentina', 'Russia', 'Japan', 'America', 'Puerto Rico', 'Guam', 'France', 'Canada', 'Mexico',
 'Finland', 'Sweden', 'Norway', 'China', 'Germany', 'Ukraine', 'Chad', 'Guatamala', 'Brazil', 'Chile', 'Columbia',
@@ -66,23 +67,30 @@ vines = ['Ooooo, he needs some milk.', 'Hi, welcome to chilis.', 'I smell like b
         'So no head?', 'I am shooketh.', 'Can I PLEASE get a waffle?', 'There is only one thing worse than a rapist. A CHILD. NO.',
         'Add two shots of vodka *proceeds to pour a WAY more than 2 shots of vodka*'] #list of random stuff
 
-life_status = 0 #makes you alive
-job = 0 #you dont have a job
-medical = 0 #you dont have a medical degree
-dental = 0 #you dont have a dental degree
-vet_school = 0 #you didn't go to vet school
-cs_degree = 0 #no CS degree
-english_degree = 0 #no english degree
-fl_degree = 0 #no foreign language degree
-business_degree = 0 #no business degree
-math_degree = 0 #no math degree
-science_degree = 0 #no science degree
-teaching_degree = 0 #no education degree
-art_degree = 0 #no fine arts degree
-music_degree = 0 #no music degree
-history_degree = 0 #no history degree
-secondary_diploma = 0 #babies can't have high school diplomas, m8
-school = 0 #not currently enrolled in school
+life_status = int(0) #makes you alive
+job = int(0) #you dont have a job
+medical = int(0) #you dont have a medical degree
+dental = int(0) #you dont have a dental degree
+vet_school = int(0) #you didn't go to vet school
+cs_degree = int(0) #no CS degree
+english_degree = int(0) #no english degree
+fl_degree = int(0) #no foreign language degree
+business_degree = int(0) #no business degree
+math_degree = int(0) #no math degree
+science_degree = int(0) #no science degree
+teaching_degree = int(0) #no education degree
+art_degree = int(0) #no fine arts degree
+music_degree = int(0) #no music degree
+history_degree = int(0) #no history degree
+secondary_diploma = int(0) #babies can't have high school diplomas, m8
+school = int(0) #not currently enrolled in school
+money = int(0) #sets money = 0 because babies are poor
+mafia_career = int(0)
+doctor_career = int(0)
+vet_career = int(0)
+military_career = int(0)
+police_career = int(0)
+
 
 intellegence = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'] 
 
@@ -181,10 +189,17 @@ time.sleep(1.5)
 
 while True: #allows to make player keep entering input
     imput = input(">>> ")
-    if imput in age_up: #ages character up 1 year
+    if imput in age_up and job == 0: #ages character up 1 year
         print(age + 1)
         age = age + 1
         time.sleep(2)
+    if imput in age_up and mafia_job == 1:
+        age = age + 1
+        print(age)
+        time.sleep(1)
+        money = money + 45600
+        print(money)
+        time.sleep(1)  
     elif imput in want_sad: #prints dumb stuff
         print(random.choice(sad))
         time.sleep(2.5)
@@ -196,6 +211,11 @@ while True: #allows to make player keep entering input
         time.sleep(2.5)
     elif imput in no_job: #quits character's job
         job = 0
+        mafia_job = 0
+        doctor_job = 0
+        vet_job = 0
+        police_job = 0
+        military_job = 0
         print("You quit your job.")
         time.sleep(2)
     elif imput in neckrope: #end the game early via suicide
@@ -204,6 +224,7 @@ while True: #allows to make player keep entering input
         exit()
     elif imput in police_job and job == 0 and secondary_diploma == 1: #allows you to apply to job if you do not already have a job and you graduated from secondary school
         job = 1
+        police_career = 1
         print("You are now a police officer.")
         time.sleep(1)
     elif imput in police_job and job == 1: #tells character they cannot get this job because they already have a job
@@ -211,16 +232,17 @@ while True: #allows to make player keep entering input
         time.sleep(1)
     elif imput in doctor_job and job == 0 and age == 18 and medical == 1:
         job == 1
+        doctor_career = 1
         print("You are now a doctor.")
         time.sleep(1)
-    #elif imput in doctor_job & job == 0 
     elif imput in doctor_job and job == 1:
         print("You already have a job, and you do not have time to work two jobs.")
     elif imput in mafia_job and job == 0 and age > 14:
         job == 1 #makes it recognize that NOW you have a job
+        mafia_career == 1
         print("Congrats. You joined the mafia.")
         time.sleep(1)
-    elif imput in mafia_job and job ==0 and age < 14:
+    elif imput in mafia_job and job == 0 and age < 14:
         print("Sorry, but you are too young to join the mafia.")
         time.sleep(1)
     elif imput in no_school and age >= 12:
@@ -231,6 +253,18 @@ while True: #allows to make player keep entering input
     elif imput in no_school and age < 12:
         print("You are not old enough to drop out of school.")
         time.sleep(1)
+    elif imput in military_boi and age >= 17 and athletic_ability >= 8:
+        job = 1
+        military_career = 1
+        print("You are now in the military.")
+    elif imput in military_boi and age >= 17 and athletic_ability < 8:
+        print("You are not fit for the military.")
+        print("Try getting a different job, or going to the gym.")
+        time.sleep(1)
+    elif imput in military_boi and age < 17:
+        print("You are not old enough to join the military.")
+    elif imput in military_boi and job == 1:
+        print("You already have a job. If you want to join the military, quit your job and try again.")
     elif imput in study:
         char_logic + .25
         print("Your logic is now" + char_logic)
@@ -243,14 +277,21 @@ if life_status == 1:
     print("YOU ARE DEAD")
     time.sleep(2)
     exit()
+else:
+    pass
     
 if age == 6:
     school = 1
     print("Congratulations, you began going to school!")
     time.sleep(1.5)
+else:
+    pass
 
 if age == 16 and school == 1:
     secondary_diploma = 1
     school = 0
     print("Congratulations, you now have your secondary diploma!")
     time.sleep(1.5)
+else:
+    pass
+
