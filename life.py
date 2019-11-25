@@ -2,9 +2,17 @@ import time
 import random
 #import tkinter
 from PIL import Image
+import math
+from tkinter import *
+from tkinter import ttk
+import winsound
+
+#root = Tk()
+#win = Canvas(root, width = 500, height = 500)
+#win.grid()
 
 age_up = ["Age_up", "age_up"] #different valid options for inputs
-want_sad = ["I_want_to_be_sad", "i_want_to_be_sad", "sad"] 
+want_sad = ["I_want_to_be_sad", "i_want_to_be_sad", "sa  bd"] 
 spook_me = ["spook_moi", "Spook_moi"]
 vino = ["do_it_for_the_vine", "Do_it_for_the_vine", "Do_it_for_the_Vine", "vine"]
 no_job = ["quit_job", "Quit_job", "Quit_Job", "No_job", "no_job"]
@@ -15,6 +23,8 @@ mafia_job = ["apply_mafia", "Apply_mafia", "Apply_Mafia", "apply_Mafia", "join_m
 no_school = ["drop_out", "dropout", "Dropout", "Drop_Out", "Drop_out"]
 study = ["study", "Study", "STUDY"]
 military_boi = ["join_military", "Join_military", "apply_military", "Appy_military", "military"]
+know_logic = ["check_logic", "Check_logic", "Check_Logic", "logic", "Logic"]
+weeb = ["weeb", "Weeb", "WEEB"]
 
 country = ['Argentina', 'Russia', 'Japan', 'America', 'Puerto Rico', 'Guam', 'France', 'Canada', 'Mexico',
 'Finland', 'Sweden', 'Norway', 'China', 'Germany', 'Ukraine', 'Chad', 'Guatamala', 'Brazil', 'Chile', 'Columbia',
@@ -67,6 +77,9 @@ vines = ['Ooooo, he needs some milk.', 'Hi, welcome to chilis.', 'I smell like b
         'So no head?', 'I am shooketh.', 'Can I PLEASE get a waffle?', 'There is only one thing worse than a rapist. A CHILD. NO.',
         'Add two shots of vodka *proceeds to pour a WAY more than 2 shots of vodka*'] #list of random stuff
 
+otaku = ["OWO", "UoU", "owo", "uwu", 'UwU', 'You are a weeb.', 'Stop it. Get some help.']
+
+
 life_status = int(0) #makes you alive
 job = int(0) #you dont have a job
 medical = int(0) #you dont have a medical degree
@@ -84,7 +97,7 @@ music_degree = int(0) #no music degree
 history_degree = int(0) #no history degree
 secondary_diploma = int(0) #babies can't have high school diplomas, m8
 school = int(0) #not currently enrolled in school
-money = int(0) #sets money = 0 because babies are poor
+money = float(0) #sets money = 0 because babies are poor
 mafia_career = int(0)
 doctor_career = int(0)
 vet_career = int(0)
@@ -140,75 +153,52 @@ print(name + "'s INTELLEGENCE, ATHLETIC ABILITY, CREATIVITY, COMMUNICATIONS, and
 time.sleep(3)
 
 print("Intellegence")
-char_int = random.choice(intellegence) #randomly chooses intellegence points
+char_int = float(random.choice(intellegence)) #randomly chooses intellegence points
 print(char_int)
 time.sleep(2)
 print("Athletic Ability")
-char_athletic = random.choice(athletic_ability) #randomly chooses atheltic points
+char_athletic = float(random.choice(athletic_ability)) #randomly chooses atheltic points
 print(char_athletic)
 time.sleep(2)
 print("Creativity")
-char_creative = random.choice(creativity) #randomly chooses creativity points
+char_creative = float(random.choice(creativity)) #randomly chooses creativity points
 print(char_creative)
 time.sleep(2)
 print("Communications")
-char_communications = random.choice(communications) #randomly chooses communication points
+char_communications = float(random.choice(communications)) #randomly chooses communication points
 print(char_communications)
 time.sleep(2)
 print("Logic")
-char_logic = random.choice(logic) #randomly chooses logic points
+char_logic = float(random.choice(logic)) #randomly chooses logic points
 print(char_logic)
 time.sleep(2)
 
-print("ABOUT THE GAME") #goes through the dumb instructions that aren't relevant because the game isn't finished
-print("Your character will age up each time you type and enter 'age up' into the terminal.")
-time.sleep(1.5)
-print("Your character starts school when they turn 5 years old.")
-print("Your character can get a job when they turn 14 years old.")
-print("Your character can start higher education when they turn 16.")
-time.sleep(2)
-print("Your character's ability to get good grades and attend postsecondary education relies")
-print("on their characteristics assigned to them earlier.")
-time.sleep(2)
-print("Throughout the game, your character will also get random events.")
-time.sleep(2)
-print("These include, but are not limited to getting ill and getting a raise at work.")
-time.sleep(1.5)
-print("Sometimes, how you choose to respond to events may raise or lower a characteristic as well.")
-time.sleep(1.5)
-print("There are also non-randomized events caused by the player.")
-time.sleep(1)
-print("These can also affect character characteristics.")
-time.sleep(1)
-print("Some examples of non-randomized events include")
-print("going to the mall or choosing to study more.")
-time.sleep(2)
-print("However, to do these, you will need to type in different commands.")
-print("These commands can be found in the game manual.")
-time.sleep(1.5)                 
-
 while True: #allows to make player keep entering input
-    imput = input(">>> ")
+    imput = input(">>> ")            
     if imput in age_up and job == 0: #ages character up 1 year
         print(age + 1)
         age = age + 1
-        time.sleep(2)
-    if imput in age_up and mafia_job == 1:
+        time.sleep(1)
+    elif imput in age_up and mafia_career == 1:
         age = age + 1
         print(age)
         time.sleep(1)
-        money = money + 45600
+        money = money + 42600
         print(money)
+        print("You earned money from working in the mafia.")
         time.sleep(1)  
     elif imput in want_sad: #prints dumb stuff
         print(random.choice(sad))
-        time.sleep(2.5)
+        time.sleep(1.5)
     elif imput in spook_me: #prints dumb stuff
         print(random.choice(spoops))
-        time.sleep(2.5)
+        time.sleep(1.5)
     elif imput in vino: #prints vine references
         print(random.choice(vines))
-        time.sleep(2.5)
+        time.sleep(1.5)
+    elif imput in weeb:
+        print(random.choice(otaku))
+        time.sleep(1)
     elif imput in no_job: #quits character's job
         job = 0
         mafia_job = 0
@@ -237,9 +227,9 @@ while True: #allows to make player keep entering input
         time.sleep(1)
     elif imput in doctor_job and job == 1:
         print("You already have a job, and you do not have time to work two jobs.")
-    elif imput in mafia_job and job == 0 and age > 14:
-        job == 1 #makes it recognize that NOW you have a job
-        mafia_career == 1
+    elif imput in mafia_job and job == 0 and age >= 14:
+        job = 1 #makes it recognize that NOW you have a job
+        mafia_career = 1
         print("Congrats. You joined the mafia.")
         time.sleep(1)
     elif imput in mafia_job and job == 0 and age < 14:
@@ -266,32 +256,12 @@ while True: #allows to make player keep entering input
     elif imput in military_boi and job == 1:
         print("You already have a job. If you want to join the military, quit your job and try again.")
     elif imput in study:
-        char_logic + .25
-        print("Your logic is now" + char_logic)
-        time.sleep(1)
+        print("You studied.")
+        char_logic = char_logic + .25
+        time.sleep(0.5)
+    elif imput in know_logic:
+        print(char_logic)
     else:
         print("That is not a valid response. Please try again.")
         time.sleep(1)
-
-if life_status == 1:
-    print("YOU ARE DEAD")
-    time.sleep(2)
-    exit()
-else:
-    pass
-    
-if age == 6:
-    school = 1
-    print("Congratulations, you began going to school!")
-    time.sleep(1.5)
-else:
-    pass
-
-if age == 16 and school == 1:
-    secondary_diploma = 1
-    school = 0
-    print("Congratulations, you now have your secondary diploma!")
-    time.sleep(1.5)
-else:
-    pass
 
